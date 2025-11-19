@@ -1,0 +1,9 @@
+{
+  "name": "student-info",
+  "version": "1.0.0",
+  "description": "Hiển thị thông tin sinh viên",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
