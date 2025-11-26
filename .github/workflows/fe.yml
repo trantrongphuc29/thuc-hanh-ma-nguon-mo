@@ -20,6 +20,6 @@ jobs:
           server: ${{ secrets.FE_FTP_HOST }}
           username: ${{ secrets.FE_FTP_USER }}
           password: ${{ secrets.FE_FTP_PASSWORD }}
-          local-dir: ./frontend
-          server-dir: /www.phucmanguocmo.somee.com
+          local-dir: ./frontend/
+          server-dir: /www.phucmanguocmo.somee.com/
           protocol: ftp
