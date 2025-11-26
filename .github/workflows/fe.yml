@@ -1,0 +1,25 @@
+name: Deploy Frontend to Somee
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "frontend/**"
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy FE via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.phucmanguocmo.somee.com }}
+          username: ${{ secrets.phuc2u2u }}
+          password: ${{ secrets.Ttp243201 }}
+          local-dir: ./FE
+          server-dir: /
+          protocol: ftp
