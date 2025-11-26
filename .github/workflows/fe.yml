@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "frontend/**"
+      - "frontend/**"   # Chỉ chạy khi có thay đổi trong thư mục frontend
 
 jobs:
   ftp-deploy:
@@ -14,12 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy FE via FTP
+      - name: Deploy frontend via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.phucmanguocmo.somee.com }}
-          username: ${{ secrets.phuc2u2u }}
-          password: ${{ secrets.Ttp243201 }}
-          local-dir: ./FE
-          server-dir: /
+          server: ${{ secrets.FE_FTP_HOST }}
+          username: ${{ secrets.FE_FTP_USER }}
+          password: ${{ secrets.FE_FTP_PASSWORD }}
+          local-dir: ./frontend   # thư mục chứa code frontend
+          server-dir: /           # thư mục gốc trên hosting Somee
           protocol: ftp
