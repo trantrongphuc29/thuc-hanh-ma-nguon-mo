@@ -1,0 +1,25 @@
+name: Deploy Frontend to Somee
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "frontend/**"  # Chỉ chạy khi frontend thay đổi
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Deploy frontend via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FE_FTP_HOST }}
+          username: ${{ secrets.FE_FTP_USER }}
+          password: ${{ secrets.FE_FTP_PASSWORD }}
+          local-dir: ./frontend
+          server-dir: /www.phucmanguocmo.somee.com
+          protocol: ftp
