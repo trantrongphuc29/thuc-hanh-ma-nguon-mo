@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test GitHub Action</title>
+</head>
+<body>
+    <h1>Test Frontend - Backend Connection</h1>
+    <div id="result">Loading...</div>
+    
+    <script>
+        fetch('http://www.yourbackend.somee.com/test-action.php')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = `
+                    <p><strong>Status:</strong> ${data.status}</p>
+                    <p><strong>Message:</strong> ${data.message}</p>
+                    <p><strong>Time:</strong> ${data.timestamp}</p>
+                    <p><strong>Server:</strong> ${data.server}</p>
+                `;
+            })
+            .catch(err => {
+                document.getElementById('result').innerHTML = `<p style="color:red">Error: ${err.message}</p>`;
+            });
+    </script>
+</body>
+</html>
